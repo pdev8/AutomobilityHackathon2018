@@ -1,0 +1,14 @@
+{
+  "name":"automobility",
+  "id":"94599084",
+  "template": "AngularJS",
+  "version": "0.0.0",
+  "src": "src",
+  "dist": "dist",
+  "main": "index.html",
+  "icon": "Icon.png",
+  "developer": "Rick",
+  "category": "General",
+  "type": "RemoteHigh",
+  "description": "Generated on 11/21/2018, 1:10:09 PM by ngi-sdk version 1.6.0"
+}

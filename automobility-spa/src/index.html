@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Parker | AI Parking Assistant</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Base css, but you'll likely want to keep them -->
+  <link rel="stylesheet" href="css/reset.css" type="text/css">
+  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.css" />
+
+
+  <!-- Your custom files -->
+  <!-- <link rel="stylesheet" href="css/angular-csp.css" type="text/css"> -->
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/animate.css" type="text/css">
+  <link rel="stylesheet" href="css/form.css" type="text/css">
+  <link rel="stylesheet" href="css/spinners.css" type="text/css">
+  <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="./assets/plugins/popper/popper.min.js"></script>
+  <script src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <!-- slimscrollbar scrollbar JavaScript -->
+  <script src="js/jquery.slimscroll.js"></script>
+  <!--Wave Effects -->
+  <script src="js/waves.js"></script>
+  <!--Menu sidebar -->
+  <script src="js/sidebarmenu.js"></script>
+  <!--stickey kit -->
+  <script src="./assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+  <script src="./assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+  <!--Custom JavaScript -->
+  <script src="js/custom.min.js"></script>
+  <!-- ============================================================== -->
+  <!-- Style switcher -->
+  <!-- ============================================================== -->
+  <script src="./assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+  <script src="js/ngi.polyfill.min.js"></script>
+  <script src="GMLIB/system.js"></script>
+  <script src="GMLIB/info.js"></script>
+
+  <!-- Uncomment libraries as you need them: -->
+  <!-- <script src="GMLIB/comm.js"></script> -->
+  <!-- <script src="GMLIB/io.js"></script> -->
+  <!-- <script src="GMLIB/media.js"></script> -->
+  <!-- <script src="GMLIB/nav.js"></script> -->
+  <!-- <script src="GMLIB/phone.js"></script> -->
+  <!-- <script src="GMLIB/system.js"></script> -->
+  <!-- <script src="GMLIB/ui.js"></script> -->
+  <!-- <script src="GMLIB/voice.js"></script> -->
+
+</head>
+
+<body ng-app="Parker">
+  <div id="main" class="background-image" ng-controller="testController as tc">
+    <div class="wrapper">
+      <div class="row">
+        <!-- ============================================================== -->
+        <!-- Loader -->
+        <!-- ============================================================== -->
+        <section ng-show="tc.state.loader" >
+          <!-- <div ng-click="tc.state.showProfileSelect()" class="overlay"></div> -->
+         
+          <div id="page-loading" >
+             
+            <div class="three-balls">
+              <div class="ball ball1"></div>
+              <div class="ball ball2"></div>
+              <div class="ball ball3"></div>
+            </div>
+          </div>
+        </section>
+        <!-- ============================================================== -->
+        <!-- Route Duration -->
+        <!-- ============================================================== -->
+        <section>
+
+        </section>
+        <!-- ============================================================== -->
+        <!-- Route Select -->
+        <!-- ============================================================== -->
+        <section ng-show="tc.state.routeSelect">
+          <div style="margin: 5%" class="wrapper">
+              <div class="row" style="margin:40px 150px 0 30%">
+                <div class="col-md-12" style=" box-sizing:unset !important">
+                    <h1 class="text-center">Where are we going?</h1>
+
+                </div>
+                </div>
+              <div style="margin-top:50px; margin-bottom: 5px; margin-left: 55px;">
+                  <input style="width: 100%;" class="form-control" placeholder="Enter destination" type="text">
+                  <button ng-click="tc.showLoader()" type="button" class="btn btn-success" style="font-size:125%; margin-top:10px; margin-bottom:-50px; margin-left: 15px">Let's Go!</button>
+              </div>
+          </div>
+           
+       
+        </section>
+        <section ng-show="tc.state.profileSelect">
+          <div class="row flex-container" style="margin-top:50px">
+            <div ng-repeat="prof in tc.profiles">
+              <img ng-click="tc.showRouteSelect()" class="center img-circle" style="max-height: 150px; margin-left:50px;"
+                src="{{ prof.img }}" alt="">
+            </div>
+          </div>
+          <div class="row" style="margin:20px 80px 0 30%">
+            <h1 class="text-center">Who is driving?</h1>
+
+          </div>
+        </section>
+        <!-- ============================================================== -->
+        <!-- Route Direction -->
+        <!-- ============================================================== -->
+        <section ng-show="tc.state.routeDirection">
+          <div class="row flex-container" style="margin:5px">
+            <div class="map-container" style="margin-left:-50px">
+              <div class="card">
+                <div class="card-body">
+                  <!-- <div id="routesmap" class="gmaps"></div> -->
+                  <img src="assets/images/map.png" style="max-height:350px">
+                </div>
+              </div>
+            </div>
+            <div class="route-container" style="margin-left:5px">
+              <div class="card">
+                <div class="card-body">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+        <section ng-show="tc.state.profileSettings">
+          <div class="row">
+            <h1>Profile Settings</h1>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <a href="./pages/route-select.html">Profile 1</a>
+            </div>
+            <div class="col-md-3">
+              <a href="#">Profile 2</a>
+            </div>
+            <div class="col-md-3">
+              <a href="#">Profile 3</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-warning" ng-click="tc.showProfileSelect()">Back</button>
+            </div>
+          </div>
+        </section>
+        <img style="max-height:200px; padding-left: 70%; " src="assets/images/parker.png" ng-show="tc.state.parkerShow">
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Your app code: -->
+  <script src="js/angular.min.js"></script>
+  <script src="app/app.js"></script>
+  <!-- <script src="js/app.js"></script> -->
+  <script src="app/controller.js"></script>
+  <script src="service/apiService.js"></script>
+
+  </div>
+
+</body>
+
+<!-- <div id="close"><img src="images/close.png" onclick="gm.system.closeApp()" alt="close"></div> -->
+
+
+
+<!-- Your app code: -->
+<script src="js/angular.min.js"></script>
+<script src="app/app.js"></script>
+<script src="service/apiService.js"></script>
+<script src="app/controller.js">
+
+</script>
+</body>
+
+</html>
